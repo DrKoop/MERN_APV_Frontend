@@ -1,4 +1,5 @@
 import { useState, useEffect, createContext } from "react";
+import { useNavigate } from "react-router-dom";
 import clienteAxios from "../config/axios";
 
 const AuthContext = createContext();
@@ -9,6 +10,8 @@ const AuthProvider = ({children}) => {
     const [ cargando, setCargando ] = useState(true);
 
     const [auth, setAuth] = useState({});
+
+    const navigate = useNavigate();
 
     useEffect(()=>{
         const autenticarUsuario = async () => {
@@ -27,7 +30,7 @@ const AuthProvider = ({children}) => {
             }
 
             try {
-                const { data } = await clienteAxios('veterinarios/perfil', config)
+                const  {data}  = await clienteAxios('veterinarios/perfil', config)
                 setAuth(data)
                 navigate('/admin')
             } catch (error) {
