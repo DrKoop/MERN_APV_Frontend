@@ -16,7 +16,8 @@ const EditarPerfil = () => {
 
 
     useEffect( () => {
-        setPerfil(auth.perfil)
+       const v = setPerfil(auth.perfil)
+       console.log(v)
     },[ auth ]);
 
     
@@ -34,7 +35,7 @@ const EditarPerfil = () => {
             return
         }
        const resultado = await actualizarPerfil(perfil)
-       setAlerta(resultado)
+       const res = setAlerta(resultado)
     }   
     const { msg } = alerta;
 
